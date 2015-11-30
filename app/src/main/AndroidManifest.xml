@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.codybroache.scoreit" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,6 +30,18 @@
         <activity
             android:name=".ScorecardsList"
             android:label="@string/title_activity_scorecards_list" >
+        </activity>
+        <activity
+            android:name=".ChooseTeams"
+            android:label="@string/title_activity_choose_teams" >
+        </activity>
+        <activity
+            android:name=".SetLineup1"
+            android:label="@string/title_activity_set_lineup1" >
+        </activity>
+        <activity
+            android:name=".SetLineup2"
+            android:label="@string/title_activity_set_lineup2" >
         </activity>
     </application>
 
