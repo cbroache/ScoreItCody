@@ -11,47 +11,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="10">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Game"
-                android:id="@+id/gameTitle"
-                android:layout_weight="1"
-                android:textColor="#41ad11"
-                android:textSize="20dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Date"
-                android:id="@+id/dateTitle"
-                android:layout_weight="1"
-                android:textColor="#41ad11"
-                android:textSize="20dp" />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/addBtn"
-                android:layout_weight=".1"
-                android:src="@android:drawable/ic_input_add"
-                android:background="#FFFFFF" />
-
-        </LinearLayout>
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Scorecards"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal"
+            android:textSize="32dp" />
 
         <ListView
             android:id="@+id/scorecard_list"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:drawSelectorOnTop="false"
-            android:layout_weight="30"
-            android:paddingTop="5dp" />
+            android:layout_weight="30" />
     </LinearLayout>
 
 </RelativeLayout>

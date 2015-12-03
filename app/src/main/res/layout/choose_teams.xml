@@ -6,28 +6,37 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Team Selection"
+        android:id="@+id/teamSelect"
+        android:paddingBottom="5dp"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:text="Away Team"/>
 
     <AutoCompleteTextView
-        android:layout_width="220dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/auto_away">
     </AutoCompleteTextView>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Home Team"/>
 
     <AutoCompleteTextView
-        android:layout_width="220dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/auto_home"
         ></AutoCompleteTextView>
 
     <Button
         android:id="@+id/submit_teams"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_margin="25dp"
         android:text="@string/set_lineups"

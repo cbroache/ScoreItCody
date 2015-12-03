@@ -25,20 +25,25 @@ public class MainActivity extends Activity  {
     Button loginBtn,createBtn;
     EditText usernameText,passwordText;
     SharedPreferences prefs;
+    static private final String TAG_UP = "scoreit_user_pass";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        prefs = getSharedPreferences("scoreit_user_pass", MODE_PRIVATE);
+        prefs = getSharedPreferences(TAG_UP, MODE_PRIVATE);
         loginBtn=(Button)findViewById(R.id.login_btn);
         usernameText=(EditText)findViewById(R.id.username);
         passwordText=(EditText)findViewById(R.id.password);
         createBtn=(Button)findViewById(R.id.create_btn);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("admin", "admin");
-        editor.commit();
+
+        //admin account create for debugging purposes
+//        SharedPreferences.Editor editor = prefs.edit();
+//        editor.putString("admin", "admin");
+//        editor.commit();
+
+
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

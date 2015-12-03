@@ -17,6 +17,8 @@ public class AccountCreation extends AppCompatActivity {
     EditText nameText,usernameText,passwordText,confirmText;
     SharedPreferences prefs_user_pass;
     SharedPreferences prefs_user_name;
+    static private final String TAG_UP = "scoreit_user_pass";
+    static private final String TAG_UN = "scoreit_user_name";
 
 
     @Override
@@ -24,8 +26,8 @@ public class AccountCreation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_creation);
 
-        prefs_user_pass = getSharedPreferences("scoreit_user_pass", MODE_PRIVATE);
-        prefs_user_name = getSharedPreferences("scoreit_user_name", MODE_PRIVATE);
+        prefs_user_pass = getSharedPreferences(TAG_UP, MODE_PRIVATE);
+        prefs_user_name = getSharedPreferences(TAG_UN, MODE_PRIVATE);
         nameText=(EditText)findViewById(R.id.full_name_acc);
         usernameText=(EditText)findViewById(R.id.username_acc);
         passwordText=(EditText)findViewById(R.id.password_acc);

@@ -86,4 +86,5 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_set_lineup2">SetLineup2</string>
+    <string name="title_activity_scorecard_overview">ScorecardOverview</string>
 </resources>
