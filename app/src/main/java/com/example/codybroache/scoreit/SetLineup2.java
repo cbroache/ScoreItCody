@@ -74,9 +74,15 @@ public class SetLineup2 extends Activity {
     private static Button nextTeam;
     private static HashMap<String, Integer> homeNamesAndNumbers = new HashMap<String, Integer>();
 
+    String username;
+    static private final String TAG_USER = "scoreit_username";
+
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_set_lineup2);
+
+        Intent intent = getIntent();
+        username = intent.getExtras().getString(TAG_USER);
 
         mAdapterHome = new PlayerListAdapter(getApplicationContext());
         teamName = (TextView) findViewById(R.id.team_name_2);

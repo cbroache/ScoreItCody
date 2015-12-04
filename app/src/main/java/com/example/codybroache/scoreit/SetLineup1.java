@@ -78,9 +78,15 @@ public class SetLineup1 extends Activity {
     private static Button nextTeam;
     private static HashMap<String, Integer> awayNamesAndNumbers = new HashMap<String, Integer>();
 
+    String username;
+    static private final String TAG_USER = "scoreit_username";
+
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_set_lineup1);
+
+        Intent intent = getIntent();
+        username = intent.getExtras().getString(TAG_USER);
 
         mAdapterAway = new PlayerListAdapter(getApplicationContext());
 
@@ -262,6 +268,7 @@ public class SetLineup1 extends Activity {
                         if (check == 0) {
                             Intent intent = new Intent(SetLineup1.this, SetLineup2.class);
                             intent.putExtra("Home Team", getIntent().getStringExtra("Home Team"));
+                            intent.putExtra(TAG_USER, username);
                             startActivity(intent);
                         } else if (check < 3) {
                             Toast.makeText(SetLineup1.this, "Please fill in all information before " +

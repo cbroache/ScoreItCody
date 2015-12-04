@@ -25,6 +25,8 @@ public class MainActivity extends Activity  {
     Button loginBtn,createBtn;
     EditText usernameText,passwordText;
     SharedPreferences prefs;
+    String username;
+    static private final String TAG_USER = "scoreit_username";
     static private final String TAG_UP = "scoreit_user_pass";
 
     @Override
@@ -47,10 +49,12 @@ public class MainActivity extends Activity  {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String valueStr = prefs.getString(usernameText.getText().toString(), null);
+                username = usernameText.getText().toString();
+                final String valueStr = prefs.getString(username, null);
                 if (valueStr != null && valueStr.equals(passwordText.getText().toString())) {
                     Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(v.getContext(), ScorecardsList.class);
+                    intent.putExtra(TAG_USER, username);
                     startActivity(intent);
                 } else {
                     Toast.makeText(getApplicationContext(), "Wrong Credentials", Toast.LENGTH_SHORT).show();

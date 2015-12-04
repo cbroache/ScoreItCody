@@ -24,10 +24,15 @@ public class ChooseTeams extends Activity {
     private AutoCompleteTextView home;
     private AutoCompleteTextView away;
     private Button bSubmit;
+    String username;
+    static private final String TAG_USER = "scoreit_username";
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.choose_teams);
+
+        Intent intent = getIntent();
+        username = intent.getExtras().getString(TAG_USER);
 
         away = (AutoCompleteTextView) findViewById(R.id.auto_away);
         away.setThreshold(1);
@@ -159,6 +164,7 @@ public class ChooseTeams extends Activity {
                     Intent intent = new Intent(ChooseTeams.this, SetLineup1.class);
                     intent.putExtra("Home Team", home.getText().toString());
                     intent.putExtra("Away Team", away.getText().toString());
+                    intent.putExtra(TAG_USER, username);
                     startActivity(intent);
                 } else {
                     Toast.makeText(ChooseTeams.this, "Please enter two valid teams before advancing.",
