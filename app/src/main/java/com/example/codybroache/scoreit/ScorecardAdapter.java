@@ -65,7 +65,7 @@ public class ScorecardAdapter extends ArrayAdapter {
         DateFormat format = new SimpleDateFormat("MMMM dd, yyyy");
         String dateString = format.format(scorecard.getDate());
         Random i = new Random();
-        final String gameText = scorecard.getHomeTeam() + " vs " + scorecard.getAwayTeam();
+        final String gameText = scorecard.getHomeTeam() + " vs. " + scorecard.getAwayTeam();
         game.setText(gameText);
         date.setText(dateString);
 

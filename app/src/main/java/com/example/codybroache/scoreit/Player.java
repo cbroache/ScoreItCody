@@ -1,5 +1,7 @@
 package com.example.codybroache.scoreit;
 
+import java.util.ArrayList;
+
 /**
  * Created by Brandon on 11/3/2015.
  */
@@ -35,6 +37,16 @@ public class Player {
     private int errorsCommitted;
     private int putOuts;
     private int assists;
+
+    public ArrayList<AtBat> getPlayerAtBats() {
+        return playerAtBats;
+    }
+
+    public void setPlayerAtBats(ArrayList<AtBat> playerAtBats) {
+        this.playerAtBats = playerAtBats;
+    }
+
+    private ArrayList<AtBat> playerAtBats;
 
     public Player(String firstName, String lastName, int number) {
         this.firstName = firstName;

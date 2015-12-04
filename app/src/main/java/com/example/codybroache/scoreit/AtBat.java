@@ -7,6 +7,15 @@ public class AtBat {
     int inning;
     int balls;
     int strikes;
+    String result;
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
 
     public int getInning() {
         return inning;
@@ -37,5 +46,13 @@ public class AtBat {
         this.inning = inning;
         this.balls = balls;
         this.strikes = strikes;
+    }
+
+    public AtBat(int inning, int balls, int strikes, String result) {
+
+        this.inning = inning;
+        this.balls = balls;
+        this.strikes = strikes;
+        this.result = result;
     }
 }

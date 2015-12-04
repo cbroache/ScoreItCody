@@ -89,7 +89,6 @@ public class ScorecardsList extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Gson gson = new Gson();
         ArrayList<Scorecard> toAdd;
         String json = prefs.getString(username, "");
         Type type = new TypeToken<ArrayList<Scorecard>>(){}.getType();
