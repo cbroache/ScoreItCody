@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TableLayout;
@@ -20,6 +21,7 @@ import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class ScorecardOverview extends AppCompatActivity {
 
@@ -133,27 +135,31 @@ public class ScorecardOverview extends AppCompatActivity {
         TableRow row = new TableRow(this);
         row.setBackgroundResource(R.drawable.cell_shape);
         TextView col1 = new TextView(this);
-        col1.setText(" # ");
+        col1.setText("#");
         //col1.setBackgroundResource(R.drawable.cell_shape);
         col1.setPadding(5, 5, 5, 5);
+        col1.setGravity(Gravity.CENTER);
         row.addView(col1);
 
         TextView col2 = new TextView(this);
-        col2.setText("Player");
+        col2.setText("     Player     ");
         //col2.setBackgroundResource(R.drawable.cell_shape);
         col2.setPadding(5, 5, 5, 5);
+        col2.setGravity(Gravity.CENTER);
         row.addView(col2);
 
         TextView col3 = new TextView(this);
-        col3.setText("Pos");
+        col3.setText(" Pos ");
         //col3.setBackgroundResource(R.drawable.cell_shape);
         col3.setPadding(5, 5, 5, 5);
+        col3.setGravity(Gravity.CENTER);
         row.addView(col3);
 
 
         for(int inning = 1; inning <= totalInnings; inning++){
             TextView col = new TextView(this);
-            col.setText(String.valueOf(inning));
+            col.setText("  " + String.valueOf(inning) + "  ");
+            col.setGravity(Gravity.CENTER);
             //col.setBackgroundResource(R.drawable.cell_shape);
             col.setPadding(5, 5, 5, 5);
             row.addView(col);
@@ -168,16 +174,21 @@ public class ScorecardOverview extends AppCompatActivity {
         col1.setText(String.valueOf(player.getNumber()));
         col1.setBackgroundResource(R.drawable.cell_shape);
         col1.setPadding(5, 5, 5, 5);
+        col1.setGravity(Gravity.CENTER);
         row.addView(col1);
+
         TextView col2 = new TextView(this);
         col2.setText(player.getLastName());
         col2.setBackgroundResource(R.drawable.cell_shape);
         col2.setPadding(5, 5, 5, 5);
+        col2.setGravity(Gravity.CENTER);
         row.addView(col2);
+
         TextView col3 = new TextView(this);
         col3.setText(player.getPosition());
         col3.setBackgroundResource(R.drawable.cell_shape);
         col3.setPadding(5, 5, 5, 5);
+        col3.setGravity(Gravity.CENTER);
         row.addView(col3);
 
         ArrayList<AtBat> atBats = player.getPlayerAtBats();
@@ -191,6 +202,7 @@ public class ScorecardOverview extends AppCompatActivity {
                 }
             }
             col.setPadding(5,5,5,5);
+            col.setGravity(Gravity.CENTER);
             row.addView(col);
         }
         return row;
@@ -245,11 +257,31 @@ public class ScorecardOverview extends AppCompatActivity {
 
     private ArrayList<AtBat> genFakeAtBat(){
         ArrayList<AtBat> atBats = new ArrayList<AtBat>();
-        atBats.add(new AtBat(1, 2, 4, "W"));
-        atBats.add(new AtBat(2, 2, 4, "W"));
-        atBats.add(new AtBat(5, 2, 4, "1B"));
-        atBats.add(new AtBat(7, 2, 4, "3B"));
-        atBats.add(new AtBat(11, 2, 4, "HR"));
-        return atBats;
+        Random rdm = new Random();
+        int rdmNum = rdm.nextInt(2);
+        if(rdmNum == 0) {
+            atBats.add(new AtBat(1, 2, 4, "W"));
+            atBats.add(new AtBat(2, 2, 4, "2B"));
+            atBats.add(new AtBat(3, 2, 4, "3B"));
+            atBats.add(new AtBat(4, 2, 4, "HR"));
+            atBats.add(new AtBat(5, 2, 4, "W"));
+            atBats.add(new AtBat(6, 2, 4, "2B"));
+            atBats.add(new AtBat(7, 2, 4, "1B"));
+            atBats.add(new AtBat(8, 2, 4, "3B"));
+            atBats.add(new AtBat(9, 2, 4, "HR"));
+            return atBats;
+        }
+        else{
+            atBats.add(new AtBat(1, 2, 4, "2B"));
+            atBats.add(new AtBat(2, 2, 4, "1B"));
+            atBats.add(new AtBat(3, 2, 4, "W"));
+            atBats.add(new AtBat(4, 2, 4, "W"));
+            atBats.add(new AtBat(5, 2, 4, "HR"));
+            atBats.add(new AtBat(6, 2, 4, "2B"));
+            atBats.add(new AtBat(7, 2, 4, "3B"));
+            atBats.add(new AtBat(8, 2, 4, "W"));
+            atBats.add(new AtBat(9, 2, 4, "W"));
+            return atBats;
+        }
     }
 }
