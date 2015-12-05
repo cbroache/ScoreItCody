@@ -43,10 +43,16 @@ public class Scorecard {
         this.date = date;
     }
 
+    public Scorecard(Team homeTeam, Team awayTeam) {
+
+        this.homeTeam = homeTeam;
+        this.awayTeam = awayTeam;
+        this.date = new Date();
+    }
+
     public Scorecard() {
         this.homeTeam = null;
         this.awayTeam = null;
-        Random i = new Random();
-        this.date = new Date(1000000000 * i.nextInt(10) * i.nextInt(10) * i.nextInt(10));
+        this.date = new Date();
     }
 }

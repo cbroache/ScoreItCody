@@ -128,7 +128,9 @@ public class ScorecardOverview extends AppCompatActivity {
             row = genPlayerRow(curPlayer);
             table.addView(row);
         }
-        genHitsRunsRow(lineup, table);
+        TableRow[] rows = genHitsRunsRows(lineup);
+        table.addView(rows[0]);
+        table.addView(rows[1]);
     }
 
     public TableRow genHeaders(){
@@ -155,7 +157,6 @@ public class ScorecardOverview extends AppCompatActivity {
         col3.setGravity(Gravity.CENTER);
         row.addView(col3);
 
-
         for(int inning = 1; inning <= totalInnings; inning++){
             TextView col = new TextView(this);
             col.setText("  " + String.valueOf(inning) + "  ");
@@ -164,6 +165,15 @@ public class ScorecardOverview extends AppCompatActivity {
             col.setPadding(5, 5, 5, 5);
             row.addView(col);
         }
+
+        TextView col4 = new TextView(this);
+        col4.setText(" Hits / AB ");
+        //col3.setBackgroundResource(R.drawable.cell_shape);
+        col4.setPadding(5, 5, 5, 5);
+        col4.setGravity(Gravity.CENTER);
+        row.addView(col4);
+
+
         return row;
     }
 
@@ -192,24 +202,136 @@ public class ScorecardOverview extends AppCompatActivity {
         row.addView(col3);
 
         ArrayList<AtBat> atBats = player.getPlayerAtBats();
+        int hits = 0;
+        int bats = 0;
         for(int curInning = 1; curInning <= totalInnings; curInning++){
             TextView col = new TextView(this);
             col.setText("   ");
             col.setBackgroundResource(R.drawable.cell_shape);
             for(AtBat bat : atBats){
                 if(bat.getInning() == curInning){
+                    bats++;
+                    if(bat.getResult().equals("1B") || bat.getResult().equals("2B")
+                            || bat.getResult().equals("3B") || bat.getResult().equals("HR")){
+                        hits++;
+                    }
                     col.setText(bat.getResult());
                 }
             }
-            col.setPadding(5,5,5,5);
+            col.setPadding(5, 5, 5, 5);
             col.setGravity(Gravity.CENTER);
             row.addView(col);
         }
+
+        TextView col4 = new TextView(this);
+        col4.setText(hits + " / " + bats);
+        col4.setBackgroundResource(R.drawable.cell_shape);
+        col4.setPadding(5, 5, 5, 5);
+        col4.setGravity(Gravity.CENTER);
+        row.addView(col4);
+
         return row;
     }
 
-    public void genHitsRunsRow(Player[] lineup, TableLayout table){
+    public TableRow[] genHitsRunsRows(Player[] players){
+        TableRow[] rows = new  TableRow[2];
+        TableRow row1 = new TableRow(this);
+        TableRow row2 = new TableRow(this);
 
+        TextView col1 = new TextView(this);
+        col1.setText("");
+        col1.setBackgroundResource(R.drawable.cell_shape);
+        col1.setPadding(5, 5, 5, 5);
+        col1.setGravity(Gravity.CENTER);
+        row1.addView(col1);
+
+        col1 = new TextView(this);
+        col1.setText("");
+        col1.setBackgroundResource(R.drawable.cell_shape);
+        col1.setPadding(5, 5, 5, 5);
+        col1.setGravity(Gravity.CENTER);
+        row2.addView(col1);
+
+        TextView col2 = new TextView(this);
+        col2.setText("");
+        col2.setBackgroundResource(R.drawable.cell_shape);
+        col2.setPadding(5, 5, 5, 5);
+        col2.setGravity(Gravity.CENTER);
+        row1.addView(col2);
+
+        col2 = new TextView(this);
+        col2.setText("");
+        col2.setBackgroundResource(R.drawable.cell_shape);
+        col2.setPadding(5, 5, 5, 5);
+        col2.setGravity(Gravity.CENTER);
+        row2.addView(col2);
+
+        TextView col3 = new TextView(this);
+        col3.setText(" Hits ");
+        col3.setBackgroundResource(R.drawable.cell_shape);
+        col3.setPadding(5, 5, 5, 5);
+        col3.setGravity(Gravity.CENTER);
+        row1.addView(col3);
+
+        col3 = new TextView(this);
+        col3.setText(" AB ");
+        col3.setBackgroundResource(R.drawable.cell_shape);
+        col3.setPadding(5, 5, 5, 5);
+        col3.setGravity(Gravity.CENTER);
+        row2.addView(col3);
+
+        int totHits = 0;
+        int totBats = 0;
+        for(int curInning = 1; curInning <= totalInnings; curInning++){
+            int hits = 0;
+            int bats = 0;
+            for(int player = 0; player < players.length; player++) {
+                Player curPlayer = players[player];
+                ArrayList<AtBat> atBats = curPlayer.getPlayerAtBats();
+                for (AtBat bat : atBats) {
+                    if (bat.getInning() == curInning) {
+                        bats++;
+                        totBats++;
+                        if (bat.getResult().equals("1B") || bat.getResult().equals("2B")
+                                || bat.getResult().equals("3B") || bat.getResult().equals("HR")) {
+                            hits++;
+                            totHits++;
+                        }
+                    }
+                }
+            }
+            TextView col = new TextView(this);
+            col.setText(String.valueOf(hits));
+            col.setBackgroundResource(R.drawable.cell_shape);
+            col.setPadding(5, 5, 5, 5);
+            col.setGravity(Gravity.CENTER);
+            row1.addView(col);
+
+            col = new TextView(this);
+            col.setText(String.valueOf(bats));
+            col.setBackgroundResource(R.drawable.cell_shape);
+            col.setPadding(5, 5, 5, 5);
+            col.setGravity(Gravity.CENTER);
+            row2.addView(col);
+        }
+
+        TextView col = new TextView(this);
+        col.setText(String.valueOf(totHits));
+        col.setBackgroundResource(R.drawable.cell_shape);
+        col.setPadding(5, 5, 5, 5);
+        col.setGravity(Gravity.CENTER);
+        row1.addView(col);
+
+        col = new TextView(this);
+        col.setText(String.valueOf(totBats));
+        col.setBackgroundResource(R.drawable.cell_shape);
+        col.setPadding(5, 5, 5, 5);
+        col.setGravity(Gravity.CENTER);
+        row2.addView(col);
+
+        rows[0] = row1;
+        rows[1] = row2;
+        return rows;
     }
 
     private void setTotalInnings(Team team){

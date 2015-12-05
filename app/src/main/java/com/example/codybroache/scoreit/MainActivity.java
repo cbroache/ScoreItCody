@@ -52,7 +52,7 @@ public class MainActivity extends Activity  {
                 username = usernameText.getText().toString();
                 final String valueStr = prefs.getString(username, null);
                 if (valueStr != null && valueStr.equals(passwordText.getText().toString())) {
-                    Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(v.getContext(), ScorecardsList.class);
                     intent.putExtra(TAG_USER, username);
                     startActivity(intent);
