@@ -1,6 +1,5 @@
 package com.example.codybroache.scoreit;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -14,8 +13,6 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
-import org.w3c.dom.Text;
 
 import java.lang.reflect.Type;
 import java.text.DateFormat;
@@ -43,7 +40,7 @@ public class ScorecardOverview extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_scorecard_overview);
         //test view
-        setContentView(R.layout.activity_scorecard_overview_test);
+        setContentView(R.layout.activity_scorecard_overview_dynamic);
 
         //get username
         Intent intent = getIntent();
@@ -60,7 +57,7 @@ public class ScorecardOverview extends AppCompatActivity {
 
 
         //test scorecard
-        scorecard = genFakeScorecard();
+        //scorecard = genFakeScorecard();
 
         // Lookup view for data population
         TextView game = (TextView) findViewById(R.id.game);

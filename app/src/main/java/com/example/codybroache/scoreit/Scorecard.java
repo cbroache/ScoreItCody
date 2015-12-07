@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public class Scorecard {
     Team homeTeam;
-    Team awayTeam;
+    Team awayTeam; 
     Date date;
 
     public Team getHomeTeam() {
